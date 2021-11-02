@@ -3,6 +3,7 @@
         "cmath": "cpp",
         "iostream": "cpp",
         "valarray": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "regex": "c"
     }
 }
