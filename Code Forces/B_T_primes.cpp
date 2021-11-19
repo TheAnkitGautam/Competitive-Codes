@@ -1,75 +1,68 @@
 #include <iostream>
-#include <bits/stdc++.h>
+#include <vector>
+#include <cmath>
+#include <set>
 using namespace std;
-#define ll long long int
-
-bool isPrime(int n)
+// typedef long long in;
+#define in int64_t
+#define ii int
+set<in> ans;
+void sieve()
 {
-    if (n == 1)
-        return false;
-    if (n == 2 || n == 3)
-        return true;
-    else if (n % 2 == 0 || n % 3 == 0)
-        return false;
-    for (int i = 5; i <= sqrt(n); i = i + 6)
+    vector<bool> isPrime((in)1e6 + 2, true);
+    for (in i = 2; i <= (in)1e6 + 1; i++)
     {
-        if (n % i == 0 || n % (i + 2) == 0)
-            return false;
+        if (isPrime[i])
+        {
+            ans.insert(i * i);
+            for (in j = i * i; j <= (in)1e6 + 1; j = j + i)
+            {
+                isPrime[j] = false;
+            }
+        }
     }
-    return true;
 }
 
-int main()
+// void search(in ele)
+// {
+//     in lo = 0, hi = ans.size() - 1;
+//     while ((hi - lo) > 1)
+//     {
+//         in mid = (lo + hi) / 2;
+//         if (ans[mid] < ele)
+//             lo = mid + 1;
+//         else
+//             hi = mid;
+//     }
+//     if ((ans[lo] == ele) or (ans[hi] == ele))
+//     {
+//         cout << "YES"
+//              << "\n";
+//         return;
+//     }
+//     else
+//         cout << "NO"
+//              << "\n";
+// }
+
+ii main()
 {
-    ll n;
-    int t, j;
+    sieve();
+    in t;
     cin >> t;
     while (t--)
     {
-        cin >> n;
-        ll a = sqrt(n);
-        if (isPrime(a) && a * a == n)
+        in ele;
+        cin >> ele;
+        // search(ele);
+        if (ans.find(ele) != ans.end())
         {
-
-            cout << "YES" << endl;
+            cout << "YES\n";
         }
         else
         {
-            cout << "NO" << endl;
+            cout << "NO\n";
         }
     }
     return 0;
 }
-
-// #include <iostream>
-// #include <bits/stdc++.h>
-// using namespace std;
-// #define ll long long int
-
-// int main()
-// {
-//     ll n;
-//     int t, j;
-//     cin >> t;
-//     while (t--)
-//     {
-//         cin >> n;
-//         j = 0;
-//         for (int i = 1; i <= n; i++)
-//         {
-//             if (n % i == 0)
-//             {
-//                 j++;
-//             }
-//         }
-//         if (j == 3)
-//         {
-//             cout << "YES" << endl;
-//         }
-//         else
-//         {
-//             cout << "NO" << endl;
-//         }
-//     }
-//     return 0;
-// }

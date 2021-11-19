@@ -1,31 +1,21 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
 int main()
 {
-    int a = 0, f = 0;
-    char str[100];
-    cin >> str;
-    for (int i = 0; str[i] != '\0'; i++)
+    int n, X = 0;
+    char s[4];
+    cin >> n;
+
+    for (int i = 0; i < n; i++)
     {
-        for (int j = i - 1; j >= 0; j--)
-        {
-            if (str[i] == str[j])
-            {
-                f = 1;
-                break;
-            }
-            else
-                a++;
-        }
+        cin >> s;
+        if (s[1] == '+')
+            X++;
+        else
+            X--;
     }
-    if (a % 2 == 0)
-    {
-        cout << "CHAT WITH HER!" << endl;
-    }
-    else
-        cout << "IGNORE HIM!" << endl;
+    cout << X << endl;
 
     return 0;
 }

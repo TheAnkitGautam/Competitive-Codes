@@ -4,6 +4,9 @@
         "iostream": "cpp",
         "valarray": "cpp",
         "ostream": "cpp",
-        "regex": "c"
+        "regex": "c",
+        "stdio.h": "c",
+        "dos.h": "c",
+        "random": "c"
     }
 }
