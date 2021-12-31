@@ -1,32 +1,33 @@
 #include <iostream>
 #include <math.h>
+#include <vector>
 using namespace std;
 int main()
 {
-    int t, num, b, res = 1, c = 0, i = 0;
-    int arr[100];
+
+    int t;
     cin >> t;
-    for (int i = 0; i <= t; i++)
+    
+    while (t--)
     {
-        cin >> num;
-        while (num != 0)
+        int n;
+        vector<int> v;
+        cin >> n;
+        int mux = 1;
+        while (n)
         {
-            b = num % 10;
-            res = b * pow(10, i);
-            arr[i] = res;
-            if (b != 0)
-            {
-                c++;
-            }
-            i++;
-            num /= 10;
+            int dig = n % 10;
+            if (dig != 0)
+                v.push_back(dig * mux);
+            n /= 10;
+            mux *= 10;
         }
-        cout << c << endl;
-        for (int k = 0; k < i; k++)
-        {
-            if (arr[k] != 0)
-                cout << arr[k] << " ";
-        }
+        cout << v.size() << endl;
+        for (int i = 0; i < v.size(); i++)
+            cout << v[i] << " ";
+        cout << endl;
+
+        v.clear();
     }
 
     return 0;
